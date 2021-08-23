@@ -9,10 +9,11 @@ import subprocess
 # Python executes shell commands and obtains execution status and output
 def get_status_output(cmd):
     print("[info:] Execute shell command: {}".format(cmd))
-    compile_pop = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    compile_pop = subprocess.Popen(cmd, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     status = compile_pop.wait()
-    data = compile_pop.stdout.read()
-    return status, data
+    prc_data = compile_pop.stderr.read() # 过程输出
+    out_data = compile_pop.stdout.read() # 结果输出
+    return status, prc_data, out_data
 
 
 # Python executes the shell pushd command
