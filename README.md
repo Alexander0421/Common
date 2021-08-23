@@ -1,2 +1,2 @@
-# Common
-Public function
+# common
+Public function of python and shell 
